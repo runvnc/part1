@@ -1,0 +1,19 @@
+{
+  "name": "contacts",
+  "version": "1.0.0",
+  "description": "Part 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "servicebus": "^1.0.15",
+    "sourced": "0.0.14",
+    "sourced-repo-mongo": "^0.3.2"
+  },
+  "devDependencies": {
+    "babel": ""
+  }
+}
