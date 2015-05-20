@@ -1,0 +1,8 @@
+
+name - string
+phone - array of phone numbers
+email - array of email addresses
+notes - long string
+deleted - boolean
+
+
