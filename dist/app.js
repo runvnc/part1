@@ -7,6 +7,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 app.use(express['static']('' + __dirname + '/public'));
+app.use(express['static']('' + __dirname + '/public/bower_components'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

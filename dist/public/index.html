@@ -1,33 +1,52 @@
 <html>
 <head>
 <title>Contacts</title>
-<script type="text/javascript" src="bower_components/bootstrap3.3.4.js">
+<link href="bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+<link href="bootstrap/dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js">
 </script>
 </head>
 
 <body>
 
-<ul id="list"></ul>
+<div class="container">
 
-<label for="name">Name:</label>
-<input type="text" name="name"/><br/>
-<br/>
+  <h1>Contacts</h1>
 
-<label for="phonelist">Phone Numbers (one per line):</label>
-<textarea name="phonelist"></textarea> <br/>
-<br/>
+  <div class="row">
+    <ul id="list"></ul>
+  </div>
 
-<label for="emaillist">Email addresses (one per line):</label>
-<textarea name="emaillist"></textarea> <br/>
-<br/>
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input class="form-control" type="text" name="name"/>
+    </div>
 
-<label for="notes">Notes:</label>
-<textarea name="notes"></textarea> <br/>
-<br/>
+    <div class="form-group">
+      <label for="phone">Phone Numbers (one per line):</label>
+      <textarea class="form-control" name="phonelist"></textarea>
+    </div>
 
-<button id="save">Save</button>
+    <div class="form-group">
+      <label for="email">Email addresses (one per line):</label>
+      <textarea class="form-control" name="email"></textarea>
+    </div>
 
-<button id="del">Delete</button>
+    <div class="form-group">
+      <label for="notes">Notes:</label>
+      <textarea class="form-control" name="notes"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-default" id="save">Save</button>
+
+    <button type="submit" class="btn btn-default" id="del">Delete</button>
+
+  </form>
+
+</div>
 
 </body>
 </html>
