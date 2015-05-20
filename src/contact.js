@@ -1,12 +1,6 @@
 var Entity = require('sourced').Entity;
 
-class Entityx {
-  constructor(s) {
-    console.log(s);
-  }
-}
-
-class Contact extends Entityx {
+class Contact extends Entity {
   constructor() {
     super();
     this.id = null;
@@ -17,9 +11,5 @@ class Contact extends Entityx {
     if (cb) cb(); 
   }
 }
-
-let c = new Contact('hello');
-
-
 
 module.exports = Contact;

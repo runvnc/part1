@@ -9,26 +9,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
 var Entity = require('sourced').Entity;
+var Contact = require('./contact');
 
-var Contact = (function (_Entity) {
-  function Contact() {
-    _classCallCheck(this, Contact);
+var ContactList = (function (_Entity) {
+  function ContactList() {
+    _classCallCheck(this, ContactList);
 
-    _get(Object.getPrototypeOf(Contact.prototype), 'constructor', this).call(this);
+    _get(Object.getPrototypeOf(ContactList.prototype), 'constructor', this).call(this);
     this.id = null;
+    this.contacts = [];
   }
 
-  _inherits(Contact, _Entity);
+  _inherits(ContactList, _Entity);
 
-  _createClass(Contact, [{
+  _createClass(ContactList, [{
     key: 'initialize',
     value: function initialize(id, cb) {
       this.id = id;
       if (cb) cb();
     }
+  }, {
+    key: 'createContact',
+    value: function createContact(c) {
+      return regeneratorRuntime.async(function createContact$(context$2$0) {
+        while (1) switch (context$2$0.prev = context$2$0.next) {
+          case 0:
+            this.digest('createContact', c);
+            this.contacts.push(new Contact(c));
+
+          case 2:
+          case 'end':
+            return context$2$0.stop();
+        }
+      }, null, this);
+    }
   }]);
 
-  return Contact;
+  return ContactList;
 })(Entity);
 
-module.exports = Contact;
+module.exports = ContactList;

@@ -1,0 +1,55 @@
+'use strict';
+
+var _this = this;
+
+var express = require('express');
+var app = express();
+
+var contactsRepo = require('./contactsrepository');
+
+app.post('/contacts/:id', function callee$0$0(req, res) {
+  var contact;
+  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return contactsRepo.get(req.params.id);
+
+      case 2:
+        contact = context$1$0.sent;
+
+        contactawait;
+
+      case 4:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+});
+
+app.get('/contacts/:id', function callee$0$0(req, res) {
+  var contact;
+  return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.next = 2;
+        return contactsRepo.get(req.params.id);
+
+      case 2:
+        contact = context$1$0.sent;
+
+        res.json(contact);
+
+      case 4:
+      case 'end':
+        return context$1$0.stop();
+    }
+  }, null, _this);
+});
+
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
