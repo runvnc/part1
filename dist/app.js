@@ -4,11 +4,14 @@ var _this = this;
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var contactsRepo = require('./contactsrepository');
 
 app.post('/contacts/:id', function callee$0$0(req, res) {
-  var contact;
+  var contactList;
   return regeneratorRuntime.async(function callee$0$0$(context$1$0) {
     while (1) switch (context$1$0.prev = context$1$0.next) {
       case 0:
@@ -16,11 +19,13 @@ app.post('/contacts/:id', function callee$0$0(req, res) {
         return contactsRepo.get(req.params.id);
 
       case 2:
-        contact = context$1$0.sent;
+        contactList = context$1$0.sent;
 
-        contactawait;
+        contactList.createContact(req.body);
+        contactsRepo.commit();
+        res.json(true);
 
-      case 4:
+      case 6:
       case 'end':
         return context$1$0.stop();
     }

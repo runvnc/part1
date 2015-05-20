@@ -1,11 +1,16 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended:false}));
 
 var contactsRepo = require('./contactsrepository');
 
 app.post('/contacts/:id', async (req, res) => {
-  let contact = await contactsRepo.get(req.params.id);
-  contactawait
+  let contactList = await contactsRepo.get(req.params.id);
+  contactList.createContact(req.body);
+  contactsRepo.commit();
+  res.json(true);
 });
 
 app.get('/contacts/:id', async (req, res) => {
