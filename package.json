@@ -5,15 +5,17 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "babel --stage 1 src -d dist && mv dist/client.js dist/public",
+    "build": "babel --optional runtime --stage 1 src -d dist && mv dist/client.js dist/public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-runtime": "^5.4.5",
     "bluebird": "^2.9.25",
     "body-parser": "^1.12.4",
     "express": "^4.12.4",
+    "mongodb": "^1.4.5",
     "servicebus": "^1.0.15",
     "sourced": "0.0.14",
     "sourced-repo-mongo": "^0.3.2"

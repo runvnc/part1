@@ -1,5 +1,6 @@
 var sourcedRepoMongo = require('sourced-repo-mongo');
 var MongoRepository = sourcedRepoMongo.Repository;
+
 var Promise = require('bluebird');
 
 Promise.promisifyAll(MongoRepository);

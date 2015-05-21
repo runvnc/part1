@@ -4,6 +4,8 @@ class Contact extends Entity {
   constructor() {
     super();
     this.id = null;
+    this.phones = [];
+    this.emails = [];
   }
 
   initialize(id, cb) {
