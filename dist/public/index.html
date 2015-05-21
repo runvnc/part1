@@ -3,10 +3,6 @@
 <title>Contacts</title>
 <link href="bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
 <link href="bootstrap/dist/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>
-<script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js">
-</script>
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js">
-</script>
 </head>
 
 <body>
@@ -19,7 +15,7 @@
     <ul id="list"></ul>
   </div>
 
-  <form>
+  <form action="/contacts" method="post">
     <div class="form-group">
       <label for="name">Name:</label>
       <input class="form-control" type="text" name="name"/>
@@ -48,5 +44,12 @@
 
 </div>
 
+<script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js">
+</script>
+<script type="text/javascript" src="client.js"></script>
+
 </body>
+
 </html>
