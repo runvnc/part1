@@ -14,7 +14,7 @@ app.use(express['static']('' + __dirname + '/public/bower_components'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-var contactsRepo = require('./contactlistrepo');
+var contactsRepo = null; // see below
 
 app.post('/contacts', function callee$0$0(req, res) {
   var data, contactList;
@@ -23,23 +23,38 @@ app.post('/contacts', function callee$0$0(req, res) {
       case 0:
         data = req.body;
 
+        console.log(data);
+
         data.emails = data.emails.split('\n');
         data.phones = data.phones.split('\n');
-        context$1$0.next = 5;
+        console.log(1);
+        context$1$0.prev = 5;
+        context$1$0.next = 8;
         return contactsRepo.get(MAIN_CONTACTS);
 
-      case 5:
+      case 8:
         contactList = context$1$0.sent;
 
+        console.log(2);
         contactList.createContact(data);
         contactsRepo.commit();
-        res.json(true);
+        context$1$0.next = 17;
+        break;
 
-      case 9:
+      case 14:
+        context$1$0.prev = 14;
+        context$1$0.t0 = context$1$0['catch'](5);
+
+        console.error(context$1$0.t0);
+
+      case 17:
+        res.json({ ok: true });
+
+      case 18:
       case 'end':
         return context$1$0.stop();
     }
-  }, null, _this);
+  }, null, _this, [[5, 14]]);
 });
 
 app.get('/contacts/:id', function callee$0$0(req, res) {
@@ -62,9 +77,14 @@ app.get('/contacts/:id', function callee$0$0(req, res) {
   }, null, _this);
 });
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+require('./mongo')().then(function () {
+  var ContactsRepo = require('./contactlistrepo');
+  contactsRepo = new ContactsRepo();
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  var server = app.listen(3000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('App listening at http://%s:%s', host, port);
+  });
 });

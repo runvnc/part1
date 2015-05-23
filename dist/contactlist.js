@@ -17,7 +17,9 @@ var ContactList = (function (_Entity) {
   function ContactList() {
     _classCallCheck(this, ContactList);
 
+    console.log('n');
     _get(Object.getPrototypeOf(ContactList.prototype), 'constructor', this).call(this);
+    console.log('m');
     this.id = null;
     this.contacts = [];
   }

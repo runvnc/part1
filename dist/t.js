@@ -2,8 +2,7 @@
 
 var _regeneratorRuntime = require('babel-runtime/regenerator')['default'];
 
-var bluebird = require('bluebird');
-var __ = bluebird.promisifyAll;
+var __ = require('bluebird').promisifyAll;
 
 function test() {
   var db;
