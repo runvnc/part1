@@ -10,7 +10,7 @@ class ContactList extends Entity {
     this.contacts = [];
   }
 
-  initialize(id, cb) {
+  init(id, cb) {
     this.id = id;
     if (cb) cb(); 
   }
@@ -19,6 +19,7 @@ class ContactList extends Entity {
     this.digest('createContact', c);
     this.contacts.push(new Contact(c));
   }
+
 }
 
 module.exports = ContactList;

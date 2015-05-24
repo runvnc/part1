@@ -27,8 +27,8 @@ var ContactList = (function (_Entity) {
   _inherits(ContactList, _Entity);
 
   _createClass(ContactList, [{
-    key: 'initialize',
-    value: function initialize(id, cb) {
+    key: 'init',
+    value: function init(id, cb) {
       this.id = id;
       if (cb) cb();
     }

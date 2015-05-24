@@ -1,13 +1,15 @@
 var sourcedRepoMongo = require('sourced-repo-mongo');
-
 var MongoRepository = sourcedRepoMongo.Repository;
+var pr = require('./util').pr;
 
-var ContactList = require('./contactlist');
+MongoRepository.commitAsync.prototype = pr(MongoRepository.commit.prototype);
+
+//var ContactList = require('./contactlist');
 
 class ContactListRepository extends MongoRepository {
   constructor() {
     super(ContactList)
-    this.cache = {};
+    this.cache = {}
   }
 
   async get(id) {

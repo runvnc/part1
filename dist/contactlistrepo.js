@@ -13,10 +13,12 @@ var _regeneratorRuntime = require('babel-runtime/regenerator')['default'];
 var _Promise = require('babel-runtime/core-js/promise')['default'];
 
 var sourcedRepoMongo = require('sourced-repo-mongo');
-
 var MongoRepository = sourcedRepoMongo.Repository;
+var pr = require('./util').pr;
 
-var ContactList = require('./contactlist');
+MongoRepository.commitAsync.prototype = pr(MongoRepository.commit.prototype);
+
+//var ContactList = require('./contactlist');
 
 var ContactListRepository = (function (_MongoRepository) {
   function ContactListRepository() {
@@ -56,13 +58,6 @@ var ContactListRepository = (function (_MongoRepository) {
           case 6:
             this.cache[id] = context$2$0.sent;
 
-            //try {
-            //  this.cache[id] = await pr(super.get)(id);
-            //} catch (e) {
-            // console.error('getAsync failed');
-            //  console.log(e.trace);
-            //  console.error(e);
-            //}
             console.log('b');
             return context$2$0.abrupt('return', this.cache[id]);
 

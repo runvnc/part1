@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var ContactList = require('./contactlist');
+
 const MAIN_CONTACTS = 'main01';
 
 app.use(express.static(`${__dirname}/public`));
@@ -10,6 +12,25 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 var contactsRepo = null; // see below
 
+async function initContacts() {
+  var contactList = new ContactList();
+
+  contactList.init( { id: MAIN_CONTACTS } );
+  console.log('t');
+  let test = {
+    name: 'Test', phones: [], emails: [],
+    notes: ''
+  };
+  contactList.createContact(test);
+  console.log(3);
+  await contactsRepo.commit();
+  /*await new Promise( res => { 
+    contactsRepo.commit(contactList);
+    res(contactList);
+  }); */
+  return contactList;  
+} 
+
 app.post('/contacts', async (req, res) => {
   let data = req.body;
   console.log(data);
@@ -18,10 +39,17 @@ app.post('/contacts', async (req, res) => {
   data.phones = data.phones.split("\n");
   console.log(1)
   try {
-    let contactList = await contactsRepo.get(MAIN_CONTACTS);
+    var contactList = await contactsRepo.get(MAIN_CONTACTS);
+    if (!contactList) {
+      contactList = await initContacts();
+      console.log(4);
+    }
+
     console.log(2)
     contactList.createContact(data);
+    console.log(5);
     contactsRepo.commit();
+    console.log(6);
   } catch (e) {
     console.error(e);
   }
