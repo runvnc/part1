@@ -7,12 +7,8 @@ async function test() {
     let db = await require('./mongo')();
     console.log('db returned');
     await __(db.collection('test')).insertAsync({x:1});
-    console.log('inserted'); 
-       
-    console.log('ok');
 
     await require('./mongo')();
-    console.log('ok');
   } catch (e) {
     console.error(e);
   }

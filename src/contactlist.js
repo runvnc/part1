@@ -3,9 +3,7 @@ var Contact = require('./contact');
 
 class ContactList extends Entity {
   constructor() {
-    console.log('n');
     super();
-    console.log('m');
     this.id = null;
     this.contacts = [];
   }

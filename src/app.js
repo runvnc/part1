@@ -16,36 +16,28 @@ async function initContacts() {
   var contactList = new ContactList();
 
   contactList.init( { id: MAIN_CONTACTS } );
-  console.log('t');
   let test = {
     name: 'Test', phones: [], emails: [],
     notes: ''
   };
   contactList.createContact(test);
-  console.log(3);
   await contactsRepo.commitAsync(contactList);
   return contactList;  
 } 
 
 app.post('/contacts', async (req, res) => {
   let data = req.body;
-  console.log(data);
 
   data.emails = data.emails.split("\n");
   data.phones = data.phones.split("\n");
-  console.log(1)
   try {
     var contactList = await contactsRepo.get(MAIN_CONTACTS);
     if (!contactList) {
       contactList = await initContacts();
-      console.log(4);
     }
 
-    console.log(2)
     contactList.createContact(data);
-    console.log(5);
     contactsRepo.commit();
-    console.log(6);
   } catch (e) {
     console.error(e);
   }
