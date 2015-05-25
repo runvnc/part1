@@ -14,11 +14,8 @@ var _Promise = require('babel-runtime/core-js/promise')['default'];
 
 var sourcedRepoMongo = require('sourced-repo-mongo');
 var MongoRepository = sourcedRepoMongo.Repository;
-var pr = require('./util').pr;
 
-MongoRepository.commitAsync.prototype = pr(MongoRepository.commit.prototype);
-
-//var ContactList = require('./contactlist');
+var ContactList = require('./contactlist');
 
 var ContactListRepository = (function (_MongoRepository) {
   function ContactListRepository() {
@@ -65,6 +62,25 @@ var ContactListRepository = (function (_MongoRepository) {
             return context$2$0.abrupt('return', contactList);
 
           case 12:
+          case 'end':
+            return context$2$0.stop();
+        }
+      }, null, this);
+    }
+  }, {
+    key: 'commitAsync',
+    value: function commitAsync(data) {
+      return _regeneratorRuntime.async(function commitAsync$(context$2$0) {
+        var _this2 = this;
+
+        while (1) switch (context$2$0.prev = context$2$0.next) {
+          case 0:
+            return context$2$0.abrupt('return', new _Promise(function (res) {
+              _get(Object.getPrototypeOf(ContactListRepository.prototype), 'commit', _this2).call(_this2, data);
+              res();
+            }));
+
+          case 1:
           case 'end':
             return context$2$0.stop();
         }

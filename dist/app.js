@@ -35,7 +35,7 @@ function initContacts() {
         contactList.createContact(test);
         console.log(3);
         context$1$0.next = 8;
-        return contactsRepo.commit();
+        return contactsRepo.commitAsync(contactList);
 
       case 8:
         return context$1$0.abrupt('return', contactList);
@@ -136,8 +136,3 @@ require('./mongo')().then(function () {
     console.log('App listening at http://%s:%s', host, port);
   });
 });
-
-/*await new Promise( res => { 
-  contactsRepo.commit(contactList);
-  res(contactList);
-}); */

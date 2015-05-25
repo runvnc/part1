@@ -1,10 +1,7 @@
 var sourcedRepoMongo = require('sourced-repo-mongo');
 var MongoRepository = sourcedRepoMongo.Repository;
-var pr = require('./util').pr;
 
-MongoRepository.commitAsync.prototype = pr(MongoRepository.commit.prototype);
-
-//var ContactList = require('./contactlist');
+var ContactList = require('./contactlist');
 
 class ContactListRepository extends MongoRepository {
   constructor() {
@@ -27,6 +24,12 @@ class ContactListRepository extends MongoRepository {
     }
   }
 
+  async commitAsync(data) {
+    return new Promise( (res) => {
+      super.commit(data);
+      res();
+    }); 
+  }
 }
 
 

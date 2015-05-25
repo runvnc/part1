@@ -23,11 +23,7 @@ async function initContacts() {
   };
   contactList.createContact(test);
   console.log(3);
-  await contactsRepo.commit();
-  /*await new Promise( res => { 
-    contactsRepo.commit(contactList);
-    res(contactList);
-  }); */
+  await contactsRepo.commitAsync(contactList);
   return contactList;  
 } 
 
